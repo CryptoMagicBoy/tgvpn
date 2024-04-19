@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Auto Clicker</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f0f0f0;
+        }
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            margin-bottom: 20px;
+        }
+        #clickButton {
+            padding: 10px 20px;
+            font-size: 18px;
+            border: none;
+            background-color: #007bff;
+            color: #fff;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        #clickButton:hover {
+            background-color: #0056b3;
+        }
+    </style>
+    <script>
+        var intervalId;
+
+        function startClicking() {
+            var interval = parseInt(document.getElementById("interval").value);
+            intervalId = setInterval(function() {
+                var button = document.getElementById("clickButton");
+                button.click();
+            }, interval * 1000);
+        }
+
+        function stopClicking() {
+            clearInterval(intervalId);
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1>Auto Clicker</h1>
+        <label for="interval">Интервал кликов (в секундах):</label><br>
+        <input type="number" id="interval" min="1" value="1"><br><br>
+        <button id="clickButton" onclick="alert('Clicked!')">Click Me!</button><br><br>
+        <button onclick="startClicking()">Start Auto Clicker</button>
+        <button onclick="stopClicking()">Stop Auto Clicker</button>
+    </div>
+</body>
+</html>
